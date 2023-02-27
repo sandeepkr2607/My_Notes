@@ -1,11 +1,11 @@
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { logout } from "../actions/userAction";
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../actions/userAction';
 
 function Header(props) {
   const { setSearch } = props;
@@ -16,7 +16,11 @@ function Header(props) {
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand onClick={() => Navigate("/")} className="logoNav">
+        <Navbar.Brand
+          onClick={() => Navigate('/')}
+          className="logoNav"
+          style={{ cursor: 'pointer' }}
+        >
           My Note
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -36,11 +40,11 @@ function Header(props) {
 
           <Nav
             className=" my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
+            style={{ maxHeight: '100px' }}
             navbarScroll
           >
             {userInfo ? (
-              <Nav.Link onClick={() => Navigate("/mynotes")}>My Notes</Nav.Link>
+              <Nav.Link onClick={() => Navigate('/mynotes')}>My Notes</Nav.Link>
             ) : null}
 
             <NavDropdown
@@ -48,7 +52,7 @@ function Header(props) {
               id="navbarScrollingDropdown"
             >
               {userInfo ? (
-                <NavDropdown.Item onClick={() => Navigate("/profile")}>
+                <NavDropdown.Item onClick={() => Navigate('/profile')}>
                   My Profile
                 </NavDropdown.Item>
               ) : null}
@@ -58,7 +62,7 @@ function Header(props) {
                   onClick={() => {
                     // localStorage.removeItem("userInfo");
                     dispatch(logout());
-                    Navigate("/");
+                    Navigate('/');
                   }}
                 >
                   Log out
@@ -68,7 +72,7 @@ function Header(props) {
                   onClick={() => {
                     // localStorage.removeItem("userInfo");
                     // dispatch(logout());
-                    Navigate("/login");
+                    Navigate('/login');
                   }}
                 >
                   Login
